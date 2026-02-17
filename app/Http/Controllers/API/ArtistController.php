@@ -15,7 +15,7 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        $artists = Artist::query()->paginate(10);
+        $artists = Artist::query()->paginate(1000);
         return ArtistResource::collection($artists);
     }
 
