@@ -16,6 +16,7 @@ class ArtistController extends Controller
      */
     public function index()
     {
+        Gate::authorize('viewAny', Artist::class);
         $artists = Artist::query()->paginate(1000);
         return ArtistResource::collection($artists);
     }
@@ -25,6 +26,7 @@ class ArtistController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('create', Artist::class);
         $request->validate([
             'name' => ['required',  'max:255', 'unique:artists,name'],
             'image_path' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
