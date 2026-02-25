@@ -33,8 +33,8 @@ Route::middleware(['auth:sanctum', 'throttle:api'])->as('api.')->group(function 
     Route::put('artists/recommended', [ArtistController::class, 'updateRecommended'])->name('artists.updateRecommended');
     Route::apiResource('artists', ArtistController::class);
     Route::delete('revoke', [AuthenticateController::class, 'revoke'])->name('user.revoke');
-    Route::get('points/total', [PointController::class, 'getTotalPoints'])->name('points.total');
-    Route::post('points/earn', [PointController::class, 'earnPoints'])->name('points.earn');
-    Route::post('points/redeem', [PointController::class, 'redeemPoints'])->name('points.redeem');
-    Route::get('points/quarter/{year}/{quarter}', [PointController::class, 'getPointsByQuarter'])->name('points.byQuarter');
+    Route::get('point', [PointController::class, 'show'])->name('points.show');
+    Route::get('points', [PointController::class, 'index'])->name('points.index');
+    Route::post('point', [PointController::class, 'earn'])->name('points.earn');
+    Route::put('point', [PointController::class, 'redeem'])->name('points.redeem');
 });
