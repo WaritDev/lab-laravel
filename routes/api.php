@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ArtistController;
 use App\Http\Controllers\API\Auth\AuthenticateController;
 use App\Http\Controllers\API\PointController;
+use App\Http\Controllers\API\DinnerPollController;
 
 // Public routes
 Route::middleware(['throttle:api'])->as('api.')->group(function () {
@@ -16,6 +17,8 @@ Route::middleware(['throttle:api'])->as('api.')->group(function () {
 
     Route::post('login', [AuthenticateController::class, 'login'])->name('user.login');
     Route::get('artists/recommended', [ArtistController::class, 'recommended'])->name('artists.recommended');
+    Route::get('dinner-poll', [DinnerPollController::class, 'results'])->name('dinner-poll.results');
+    Route::post('dinner-poll', [DinnerPollController::class, 'vote'])->name('dinner-poll.vote');
 });
 
 // Protected routes
