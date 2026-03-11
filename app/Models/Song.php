@@ -12,6 +12,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Song extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'title',
+        'artist_id',
+        'duration',
+        'image_path',
+    ];
+    
     public function artist() : BelongsTo{
         return $this->belongsTo(Artist::class);
     }

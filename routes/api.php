@@ -6,6 +6,9 @@ use App\Http\Controllers\API\ArtistController;
 use App\Http\Controllers\API\Auth\AuthenticateController;
 use App\Http\Controllers\API\PointController;
 use App\Http\Controllers\API\DinnerPollController;
+use Illuminate\Support\Facades\Broadcast;
+
+Broadcast::routes(['middleware' => ['auth:sanctum']]);
 
 // Public routes
 Route::middleware(['throttle:api'])->as('api.')->group(function () {
